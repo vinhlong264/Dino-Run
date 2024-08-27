@@ -19,8 +19,7 @@ public class Dino : MonoBehaviour
 
     [Header("Move info")]
     public float moveSpeed;
-    public bool isGround;
-    public bool canJump;
+    public bool canJump { get; set; }
 
     [Header("Colision info")]
     [SerializeField] private Transform Ground;
@@ -46,7 +45,6 @@ public class Dino : MonoBehaviour
     {
         stateManager.currentState.Update();
         StateTimer -= Time.deltaTime;
-        isGround = isGroundDetected();
     }
 
 
@@ -55,12 +53,12 @@ public class Dino : MonoBehaviour
         rb.velocity = new Vector2 (x, y);
     }
 
-    public RaycastHit2D isGroundDetected() => Physics2D.Raycast(Ground.position, Vector2.down, WhatIsMask);
+    public Collider2D isGroundDetected() => Physics2D.OverlapCircle(Ground.position, grounDistance, WhatIsMask);
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(Ground.position, new Vector3(Ground.position.x, Ground.position.y - grounDistance, Ground.position.z));
+        Gizmos.DrawWireSphere(Ground.position, grounDistance);
     }
 
 }

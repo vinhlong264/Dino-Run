@@ -6,9 +6,11 @@ public class Platform : MonoBehaviour
     private float scaleGrownX;
 
     private SpriteRenderer sr;
+    private BoxCollider2D box;
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        box = GetComponent<BoxCollider2D>();
     }
 
     public void SetUpPlatForm(float _grownSpeed , float _scaleGrowX)
@@ -22,7 +24,9 @@ public class Platform : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Mouse0))
         {
-            transform.localScale = Vector2.Lerp(transform.localScale , new Vector2(scaleGrownX , transform.localScale.y) , growSpeed * Time.deltaTime);
+            //transform.localScale = Vector2.Lerp(transform.localScale , new Vector2(scaleGrownX , transform.localScale.y), growSpeed * Time.deltaTime);
+            box.size = Vector2.Lerp(box.size, new Vector2(scaleGrownX, box.size.y), growSpeed * Time.deltaTime);
+            sr.size  = Vector2.Lerp(sr.size, new Vector2(scaleGrownX, sr.size.y), growSpeed * Time.deltaTime);
         }
         else
         {
