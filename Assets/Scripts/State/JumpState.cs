@@ -12,8 +12,8 @@ public class JumpState : DinoState
     {
         Dino.anim.SetBool("Jump", true);
 
-        Dino.setVelocity(5, 20);
-        Dino.StateTimer = 1f;
+        Dino.setVelocity(Dino.rb.velocity.x, 15);
+        Dino.StateTimer = 0.75f;
 
     }
 
@@ -21,7 +21,7 @@ public class JumpState : DinoState
     {
         if(Dino.StateTimer < 0)
         {
-            stateManager.changeState(Dino._idleState);
+            stateManager.changeState(Dino._runState);
         }
     }
 

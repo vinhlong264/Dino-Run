@@ -15,11 +15,12 @@ public class Dino : MonoBehaviour
 
     #endregion
 
-    public float StateTimer;
+    public float StateTimer { get; set; }
+    public float RunTimer;
+
 
     [Header("Move info")]
     public float moveSpeed;
-    public bool canJump { get; set; }
 
     [Header("Colision info")]
     [SerializeField] private Transform Ground;

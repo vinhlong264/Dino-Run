@@ -12,7 +12,7 @@ public class IdleState : GroundState
         Dino.anim.SetBool("Idle", true);
         Debug.Log("Enter IdleState");
 
-        Dino.StateTimer = 2f;
+        Dino.StateTimer = Dino.RunTimer;
     }
     public override void Update()
     {

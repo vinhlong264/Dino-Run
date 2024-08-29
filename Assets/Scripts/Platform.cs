@@ -24,13 +24,12 @@ public class Platform : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Mouse0))
         {
-            //transform.localScale = Vector2.Lerp(transform.localScale , new Vector2(scaleGrownX , transform.localScale.y), growSpeed * Time.deltaTime);
             box.size = Vector2.Lerp(box.size, new Vector2(scaleGrownX, box.size.y), growSpeed * Time.deltaTime);
             sr.size  = Vector2.Lerp(sr.size, new Vector2(scaleGrownX, sr.size.y), growSpeed * Time.deltaTime);
         }
         else
         {
-            sr.color = new Color(1, 1, 1, sr.color.a - (0.2f * Time.deltaTime));
+            sr.color = new Color(1, 1, 1, sr.color.a - (0.15f * Time.deltaTime));
             if (sr.color.a <= 0)
             {
                 Destroy(gameObject);

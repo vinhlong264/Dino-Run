@@ -16,17 +16,9 @@ public class GroundState : DinoState
 
     public override void Update()
     {
-        if(!Dino.isGroundDetected() && Dino.canJump)
+        if(Input.GetKeyDown(KeyCode.Space) && Dino.isGroundDetected())
         {
             stateManager.changeState(Dino._jumpState);
-            Dino.canJump = false;
-            return;
-        }
-
-
-        if (Dino.isGroundDetected())
-        {
-            Dino.canJump = true;
         }
     }
 
