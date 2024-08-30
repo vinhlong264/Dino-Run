@@ -2,12 +2,17 @@
 
 public class MapInfinite : MonoBehaviour
 {
-   [SerializeField] private float currentDis;
-   [SerializeField] private Transform target;
-   [SerializeField] private float respawnDis;
-   [SerializeField] private float limitDis;
+    [SerializeField] protected float currentDis;
+    [SerializeField] protected Transform target;
+    [SerializeField] protected float respawnDis;
+    [SerializeField] protected float limitDis;
 
-    protected virtual void FixedUpdate()
+    protected virtual void Start()
+    {
+
+    }
+
+    protected virtual void Update()
     {
         Spawning();
     }
@@ -15,7 +20,7 @@ public class MapInfinite : MonoBehaviour
 
     protected virtual void Spawning()
     {
-        if(getDistance() < limitDis)
+        if (getDistance() < limitDis)
         {
             return;
         }
