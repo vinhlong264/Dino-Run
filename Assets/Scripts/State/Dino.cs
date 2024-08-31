@@ -5,6 +5,7 @@ public class Dino : MonoBehaviour
     #region Component
     public Animator anim {  get; private set; }
     public Rigidbody2D rb { get; private set; }
+    public Collider2D cd { get; private set; }
     #endregion
 
     #region State
@@ -12,6 +13,7 @@ public class Dino : MonoBehaviour
     public IdleState _idleState {  get; private set; }
     public RunState _runState { get; private set; }
     public JumpState _jumpState { get; private set; }
+    public DeathState _deathState {  get; private set; }
 
     #endregion
 
@@ -33,12 +35,14 @@ public class Dino : MonoBehaviour
         _idleState = new IdleState(this, stateManager);
         _runState = new RunState(this, stateManager);
         _jumpState = new JumpState(this, stateManager);
+        _deathState = new DeathState(this, stateManager);
     }
 
     private void Start()
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        cd = GetComponent<Collider2D>();
         stateManager.Initialization(_idleState);
     }
 
@@ -48,6 +52,11 @@ public class Dino : MonoBehaviour
         StateTimer -= Time.deltaTime;
     }
 
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
+
 
     public void setVelocity(float x , float y)
     {
@@ -55,6 +64,11 @@ public class Dino : MonoBehaviour
     }
 
     public Collider2D isGroundDetected() => Physics2D.OverlapCircle(Ground.position, grounDistance, WhatIsMask);
+
+    public void Die()
+    {
+        stateManager.changeState(_deathState);
+    }
 
     private void OnDrawGizmos()
     {

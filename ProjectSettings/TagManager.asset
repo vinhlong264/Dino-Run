@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Dino
   layers:
   - Default
   - TransparentFX
@@ -46,6 +47,9 @@ TagManager:
     locked: 0
   - name: Ground
     uniqueID: 353751283
+    locked: 0
+  - name: Trap
+    uniqueID: 524504091
     locked: 0
   - name: Dino
     uniqueID: 2781858331
