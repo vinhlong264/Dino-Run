@@ -15,10 +15,7 @@ public class DeathState : DinoState
     }
     public override void Update()
     {
-        if (Dino.StateTimer <= 0f)
-        {
-            Dino.rb.bodyType = RigidbodyType2D.Static;
-        }
+        
     }
 
     public override void Exit()
